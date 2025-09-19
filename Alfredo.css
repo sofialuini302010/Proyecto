@@ -1,4 +1,4 @@
-/* === Estilos creativos pero caseros === */
+
 
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -239,4 +239,5 @@ table tr:hover td {
   main { padding: 1.2rem; }
   header h1 { font-size: 22pt; }
   #galeria img { width: 100%; transform: none; }
+
 }
