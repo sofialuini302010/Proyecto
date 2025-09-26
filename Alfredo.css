@@ -1,4 +1,4 @@
-
+/* === Estilos creativos pero caseros === */
 
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -239,5 +239,64 @@ table tr:hover td {
   main { padding: 1.2rem; }
   header h1 { font-size: 22pt; }
   #galeria img { width: 100%; transform: none; }
+}
+/* Trivia */
+#trivia {
+  margin-top: 2rem;
+  padding: 1rem;
+  background: #fffaf4;
+  border-left: 5px solid #993300;
+  border-radius: 6px;
+}
 
+#trivia h2 {
+  font-size: 22pt;
+  color: #993300;
+  margin-bottom: 1rem;
+}
+
+#pregunta {
+  font-weight: bold;
+  margin-bottom: 0.8rem;
+  color: #2b2b2b;
+}
+
+#opciones button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  margin: 0.4rem 0;
+  padding: 0.6rem;
+  font-size: 14pt;
+  border: 1px solid #DE991C;
+  border-radius: 6px;
+  background: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+#opciones button:hover {
+  background: #fff3e0;
+}
+
+#siguiente {
+  margin-top: 1rem;
+  padding: 0.6rem 1rem;
+  background: #993300;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14pt;
+  cursor: pointer;
+  display: none; 
+}
+
+#siguiente:hover {
+  background: #cc6600;
+}
+
+#resultado {
+  margin-top: 0.8rem;
+  font-weight: bold;
+  color: #993300;
 }
