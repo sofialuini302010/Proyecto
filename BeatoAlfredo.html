@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<style>
+    .modal {
+     display: none;
+     position: fixed;
+     left: 0; top: 0;
+     width: 100%; height: 100%;
+     background-color: rgba(255, 201, 121, 0.904);
+     z-index: 1000;
+    }
+    .modal-contenido {
+     background: rgb(255, 215, 156);
+     margin: 5% auto;
+     padding: 20px;
+     border-radius: 10px;
+     max-width: 600px;
+     max-height: 80vh;
+     overflow-y: auto;
+    }
+    .cerrar { float: right; cursor: pointer; font-size: 24px; }
+</style>
+
+</head>
+<body>
+
+<section id="jugar-trivia">
+    <h2>¿Te animas a poner a prueba tus conocimientos?</h2>
+    <button id="abrirTrivia">Comenzar Trivia</button>
+</section>
+
+<!-- MODAL -->
+<div id="modalTrivia" class="modal">
+ <div class="modal-contenido">
+ <span class="cerrar">&times;</span>
+
+ <h2>Trivia sobre el Beato Alfredo Parte</h2>
+
+<form id="formTrivia">
+
+ <p><strong>1.</strong> ¿En què año nació el Beato Alfredo Parte?</p>
+ <label><input type="radio" name="p1" value="1899"> 1899</label><br>
+ <label><input type="radio" name="p1" value="1799"> 1799</label><br>
+ <label><input type="radio" name="p1" value="1889"> 1889</label><br><br>
+ 
+ <p><strong>2.</strong> ¿Cuáles eran los nombres de sus padres?</p>
+ <label><input type="radio" name="p2" value="Enrique y Julia"> Enrique y Julia</label><br>
+ <label><input type="radio" name="p2" value="Castor y Justa"> Castor y Justa</label><br>
+ <label><input type="radio" name="p2" value="Carlos y Josefa"> Carlos y Josefa</label><br><br>
+
+ <p><strong>3.</strong> ¿En dónde se ordenó sacerdote?</p>
+ <label><input type="radio" name="p3" value="Bricia"> Bricia</label><br>
+ <label><input type="radio" name="p3" value="Peralta de la Sal"> Peralta de la Sal</label><br>
+ <label><input type="radio" name="p3" value="Palencia"> Palencia</label><br><br>
+
+ <p><strong>4.</strong> ¿Qué lo dejó cojo a los 18 años?</p>
+ <label><input type="radio" name="p4" value="Un accidente"> Un accidente</label><br>
+ <label><input type="radio" name="p4" value="Una enfermedad"> Una enfermedad</label><br>
+ <label><input type="radio" name="p4" value="Una caída"> Una caída</label><br><br>
+
+ <p><strong>5.</strong> ¿Cómo murió?</p>
+ <label><input type="radio" name="p5" value="Fusilado"> Fusilado</label><br>
+ <label><input type="radio" name="p5" value="Ahorcado"> Ahorcado</label><br>
+ <label><input type="radio" name="p5" value="Quemado"> Quemado</label><br><br>
+
+ <p><strong>6.</strong> ¿En qué barco estuvo preso?</p>
+ <label><input type="radio" name="p6" value="Las Marías"> Las Marías</label><br>
+ <label><input type="radio" name="p6" value="La mayor"> La mayor</label><br>
+ <label><input type="radio" name="p6" value="Alfonso Pérez"> Alfonso Pérez</label><br><br>
+
+ <p><strong>7.</strong> ¿Qué fue lo último que dijo antes de morir?</p>
+ <label><input type="radio" name="p7" value="Hasta ahora he necesitado bastón, pero para subir hacia Dios no lo necesito"> Hasta ahora he necesitado bastón, pero para subir hacia Dios no lo necesito</label><br>
+ <label><input type="radio" name="p7" value="María, ten piedad de tu hijo"> María, ten piedad de tu hijo</label><br>
+ <label><input type="radio" name="p7" value="¡Viva Cristo Rey!"> ¡Viva Cristo Rey!</label><br><br>
+
+ <button type="submit">Enviar respuestas</button>
+</form>
+
+<div id="resultado"></div>
+ </div>
+</div>
+
+<!-- SCRIPT -->
+<script>
+const modal = document.getElementById("modalTrivia");
+const btnAbrir = document.getElementById("abrirTrivia");
+const btnCerrar = document.querySelector(".cerrar");
+
+btnAbrir.onclick = () => { modal.style.display = "block"; };
+btnCerrar.onclick = () => { modal.style.display = "none"; };
+window.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; };
+</script> 
+
+<script>
+document.getElementById("formTrivia").addEventListener("submit", function(e) {
+ e.preventDefault();
+
+ let puntaje = 0;
+ let salida = "";
+
+ 
+ let r1 = document.querySelector('input[name="p1"]:checked');
+ let r2 = document.querySelector('input[name="p2"]:checked');
+ let r3 = document.querySelector('input[name="p3"]:checked');
+ let r4 = document.querySelector('input[name="p4"]:checked');
+ let r5 = document.querySelector('input[name="p5"]:checked');
+ let r6 = document.querySelector('input[name="p6"]:checked');
+ let r7 = document.querySelector('input[name="p7"]:checked');
+
+ 
+ if (r1) {
+   if (r1.value === "1899") { puntaje++; salida += "<p class='correcta'>1. Correcta</p>"; }
+   else { salida += "<p class='incorrecta'>1. Incorrecta. Correcta: 1899</p>"; }
+ } else salida += "<p class='incorrecta'>1. No respondida. Correcta: 1899</p>";
+
+ 
+ if (r2) {
+   if (r2.value === "Castor y Justa") { puntaje++; salida += "<p class='correcta'>2. Correcta</p>"; }
+   else { salida += "<p class='incorrecta'>2. Incorrecta. Correcta: Castor y Justa</p>"; }
+ } else salida += "<p class='incorrecta'>2. No respondida. Correcta: Castor y Justa</p>";
+
+ 
+ if (r3) {
+   if (r3.value === "Palencia") { puntaje++; salida += "<p class='correcta'>3. Correcta</p>"; }
+   else { salida += "<p class='incorrecta'>3. Incorrecta. Correcta: Palencia</p>"; }
+ } else salida += "<p class='incorrecta'>3. No respondida. Correcta: Palencia</p>";
+
+ 
+ if (r4) {
+   if (r4.value === "Una enfermedad") { puntaje++; salida += "<p class='correcta'>4. Correcta</p>"; }
+   else { salida += "<p class='incorrecta'>4. Incorrecta. Correcta: Una enfermedad</p>"; }
+ } else salida += "<p class='incorrecta'>4. No respondida. Correcta: Una enfermedad</p>";
+
+ 
+ if (r5) {
+   if (r5.value === "Fusilado") { puntaje++; salida += "<p class='correcta'>5. Correcta</p>"; }
+   else { salida += "<p class='incorrecta'>5. Incorrecta. Correcta: Fusilado</p>"; }
+ } else salida += "<p class='incorrecta'>5. No respondida. Correcta: Fusilado</p>";
+
+ 
+ if (r6) {
+   if (r6.value === "Alfonso Pérez") { puntaje++; salida += "<p class='correcta'>6. Correcta</p>"; }
+   else { salida += "<p class='incorrecta'>6. Incorrecta. Correcta: Alfonso Pérez</p>"; }
+ } else salida += "<p class='incorrecta'>6. No respondida. Correcta: Alfonso Pérez</p>";
+
+ 
+ if (r7) {
+   if (r7.value === "Hasta ahora he necesitado bastón, pero para subir hacia Dios no lo necesito") { puntaje++; salida += "<p class='correcta'>7. Correcta</p>"; }
+   else { salida += "<p class='incorrecta'>7. Incorrecta. Correcta: Hasta ahora he necesitado bastón, pero para subir hacia Dios no lo necesito</p>"; }
+ } else salida += "<p class='incorrecta'>7. No respondida. Correcta: Hasta ahora he necesitado bastón, pero para subir hacia Dios no lo necesito</p>";
+
+ salida += `<h4>Puntaje final: ${puntaje} de 7</h4>`;
+ document.getElementById("resultado").innerHTML = salida;
+});
+</script>
+
+</body>
+</html>
